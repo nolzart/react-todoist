@@ -36,7 +36,7 @@
 
         &--login:hover,
         &--signup:hover {
-            text-decoration: underline;
+            border-bottom: 2px solid $color-white;
         }
     }
 }

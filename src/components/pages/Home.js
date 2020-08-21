@@ -1,7 +1,7 @@
 import React from 'react'
 
 //Components
-import Header from './layout/Header'
+import Header from '../layout/Header'
 
 const Home = () => (
     <>

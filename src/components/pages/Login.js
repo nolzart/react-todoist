@@ -1,23 +1,26 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Login = () => {
     return (
         <section className='login'>
             <div className='login__container'>
-                <div className='login__container--logo'>
+                <Link className='login__container--logo' to='/'>
                     <img src='img/logo.png' alt='Todoist logo' />
                     <h2>todoist</h2>
-                </div>
+                </Link>
                 <h2 className='heading-secondary'>Log in</h2>
                 <a href='/login-google' className='login__container--link'>
-                    Continue with Google
+                    <img src="img/google-color.png" alt="Google icon"/> Continue with Google
                 </a>
                 <a href='/login-facebbok' className='login__container--link'>
-                    Continue with Facebook
+                    <img src="img/facebook-square-color.png" alt="Google icon"/> Continue with Facebook
                 </a>
-                <div className='separator-or'>OR</div>
+                <div className='separator-or'>
+                    <span>OR</span>
+                </div>
                 <form className='form'>
-                    <div className='form-group'>
+                    <div className='form__group'>
                         <input
                             type='email'
                             name='email'
@@ -30,7 +33,7 @@ const Login = () => {
                             Email
                         </label>
                     </div>
-                    <div className='form-group'>
+                    <div className='form__group'>
                         <input
                             type='password'
                             name='password'
@@ -44,24 +47,29 @@ const Login = () => {
                         </label>
                     </div>
                     <button className='btn btn--large btn--red'>Log in</button>
-                    <label htmlFor='permanent-login'>
+                    <label
+                        htmlFor='permanent-login'
+                        className='permanent-login'
+                    >
                         <input
                             type='checkbox'
                             name='permanent-login'
                             id='permanent-login'
-                            className='form__input-permanent'
+                            className='form__checkbox'
                         />
-                        Keep me logged in
+                        <span className='form__checkbox--checked'></span>Keep me
+                        logged in
                     </label>
-                    <a href='/ForgotPassword'>Forgot your Password?</a>
-                    <div className='help-block'>
-                        <p>
-                            <a href='/signup'>
-                                <span>Sign up</span>
-                            </a>
-                        </p>
-                    </div>
                 </form>
+                <a href='/ForgotPassword' className='login__container--forgot'>
+                    Forgot your Password?
+                </a>
+                <hr />
+                <div className='help-block'>
+                    <Link to='/signup'>
+                        You do not have an account? <span>Sign up</span>
+                    </Link>
+                </div>
             </div>
         </section>
     )

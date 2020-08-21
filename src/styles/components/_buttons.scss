@@ -4,10 +4,11 @@
     cursor: pointer;
     display: block;
     font-size: 1.6rem;
-    margin: 0 auto;
+    margin: 3rem auto;
     outline: none;
     padding: 1.5rem 6rem;
     transition: all .3s ease;
+    text-align: center;
 
     &:hover {
         transform: scale(1.03) translateY(-.2rem);
@@ -25,7 +26,7 @@
 
     &--large {
         width: 100%;
-        border-radius: 1rem;
+        border-radius: .5rem;
     }
 
     &--radius {
