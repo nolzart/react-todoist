@@ -1,0 +1,43 @@
+//Base
+*,
+*::after,
+*::before{
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    box-sizing: border-box;
+}
+
+
+.form {
+    &__group {
+        width: 100%
+    }
+
+    &__label {
+        display: block;
+        font-size: 1.6rem;
+    }
+
+    &__input {
+        display: block;
+        width: 100%;
+        border: none;
+        outline: none;
+        border-bottom: 2px solid rgb(117, 113, 113);
+        font-size: 1.6rem;
+        margin: 2rem 0;
+
+        &:valid {
+            border-bottom: 1px solid #10ac84;
+        }
+    }
+
+}

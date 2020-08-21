@@ -1,0 +1,37 @@
+.login {
+    margin: 0 auto;
+    width: 70%;
+
+    &__container {
+        border: 1px solid $gray-light-1;
+        border-radius: 1rem;
+        margin: 4rem auto;
+        width: 45rem;
+        padding: 2rem;
+
+        &--logo {
+            align-items: flex-end;
+            color: $color-primary;
+            display: flex;
+            margin-bottom: 3rem;
+
+            img {
+                background-color: $color-primary;
+                border: 1px solid $color-primary;
+                border-radius: 1rem;
+                width: 4rem;
+            }
+        }
+
+        &--link {
+            border: 1px solid $gray-light-1;
+            text-align: center;
+            width: 100%;
+            padding: 1rem 0;
+            color: #525252;
+            display: block;
+            line-height: 1rem;
+            margin-bottom: 2rem;
+        }
+    }
+}
