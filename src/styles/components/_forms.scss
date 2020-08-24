@@ -1,0 +1,69 @@
+
+.form {
+    &__group {
+        margin-bottom: 1rem;
+        width: 100%;
+    }
+
+    &__label {
+        display: block;
+        font-size: 1.6rem;
+        transition: all .3s ease;
+    }
+
+    &__input {
+        border: none;
+        border-bottom: 2px solid rgb(117, 113, 113);
+        display: block;
+        font-size: 1.6rem;
+        margin: 1rem 0;
+        outline: none;
+        position: relative;
+        padding: 1rem 0;
+        width: 100%;
+
+        &--show-password {
+            position: relative;
+            top: 4rem;
+            left: 39rem;
+            z-index: 10;
+            height: 1.8rem;
+            width: 1.8rem;
+            cursor: pointer;
+            box-shadow: 0px 0.1rem 0.2rem rgba(0,0,0,.2);
+        }
+
+        &:placeholder-shown + .form__label {
+            opacity: 0;
+            top: -1rem;
+        }
+
+        &:focus {
+            border-bottom: 2px solid $color-primary;
+        }
+        &:valid {
+            border-bottom: 2px solid #10ac84;
+        }
+    }
+
+
+    
+    &__checkbox {
+        display: none;    
+
+        &--checked {
+            width: .8rem;
+            height: .8rem;
+            display: inline-block;
+            outline: 2px solid $color-primary;
+            outline-offset: 2px;
+            border-radius: 1px;
+            margin-right: 1rem;
+        }
+    }
+
+    &__checkbox:checked + &__checkbox--checked  {
+        background: $color-primary;
+    }
+}
+    

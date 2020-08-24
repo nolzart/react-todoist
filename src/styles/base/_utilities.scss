@@ -1,8 +1,16 @@
 .u-color-white {color: $color-white !important; }
+.u-color-blue {color: $color-blue !important;}
+.u-color-green {color: $color-green !important; }
+.u-color-purple {color: $color-purple !important; }
 .u-color-primary {color: $color-primary !important; }
 
-.u-mb-small {margin-bottom: .5rem !important}
-.u-mb-small-1 {margin-bottom: 1rem !important}
-.u-mb-small-2 {margin-bottom: 2rem !important}
+.u-mb-small {margin-bottom: .5rem !important;}
+.u-mb-small-1 {margin-bottom: 1rem !important;}
+.u-mb-small-2 {margin-bottom: 2rem !important;}
 
 .u-mb-medium {margin-bottom: 4rem !important;}
+.u-mb-big {margin-bottom: 8rem !important;}
+
+.u-mr-small {margin-right: .5rem !important;}
+.u-mr-medium {margin-right: 4rem !important;}
+.u-mr-big {margin-right: 8rem !important;}

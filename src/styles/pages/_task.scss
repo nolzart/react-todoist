@@ -1,0 +1,58 @@
+.task {
+    display: block;
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.4rem;
+
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-bottom: .5rem;
+        border-bottom: 1px solid $shading-gray;
+
+        &--title {
+            font-size: 1.4rem;
+        }
+    }
+
+    &__body {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        padding-bottom: .5rem;
+        border-bottom: 1px solid $shading-gray;
+        &:not(:first-child) {
+            margin: 2rem 0;
+        }
+        &:hover &--icon-container{
+            visibility: visible;
+        }
+        &--title,
+        &--project {
+            font-size: 1.4rem;
+        }
+
+        &--options {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        &--icon-container {
+            visibility: hidden;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        &--icon-item {
+            @extend .header__icon;
+            color: $gray-light-2;
+        }
+
+        &--title {
+            margin-top:.5rem;
+            margin-left: .5rem;
+        }
+    }
+}

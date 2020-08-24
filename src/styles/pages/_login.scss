@@ -87,6 +87,10 @@
         color: $gray-light-2;
         span {
             color: $color-primary;
+
+            &:hover {
+                border-bottom: 2px solid $color-primary;
+            }
         }
     }
 }

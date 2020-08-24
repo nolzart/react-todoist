@@ -2,6 +2,11 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 const Login = () => {
+    const toggleShowPassword = e => {
+        let inputType = e.target.parentNode.childNodes[1]
+        e.target.name = inputType.type === 'password' ? 'eye-outline' : 'eye-off-outline'
+        inputType.type = inputType.type === 'password' ? 'text' : 'password'
+    }
     return (
         <section className='login'>
             <div className='login__container'>
@@ -11,10 +16,15 @@ const Login = () => {
                 </Link>
                 <h2 className='heading-secondary'>Log in</h2>
                 <a href='/login-google' className='login__container--link'>
-                    <img src="img/google-color.png" alt="Google icon"/> Continue with Google
+                    <img src='img/google-color.svg' alt='Google icon' />
+                    Continue with Google
                 </a>
                 <a href='/login-facebbok' className='login__container--link'>
-                    <img src="img/facebook-square-color.png" alt="Google icon"/> Continue with Facebook
+                    <img
+                        src='img/facebook-square-color.svg'
+                        alt='Google icon'
+                    />
+                    Continue with Facebook
                 </a>
                 <div className='separator-or'>
                     <span>OR</span>
@@ -34,6 +44,11 @@ const Login = () => {
                         </label>
                     </div>
                     <div className='form__group'>
+                        <ion-icon
+                            name='eye-off-outline'
+                            class='form__input--show-password'
+                            onClick={toggleShowPassword}
+                        ></ion-icon>
                         <input
                             type='password'
                             name='password'

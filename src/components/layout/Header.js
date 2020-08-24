@@ -1,23 +1,27 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 
 const Header = () => (
     <header className='header'>
-        <div className='header__brand'>
-            <img
-                src='img/logo.png'
-                alt='Todoist logo'
-                className='header__brand--logo'
+        <div className='header__left'>
+            <ion-icon name='grid-outline' class='header__icon'></ion-icon>
+            <ion-icon name='home-outline' class='header__icon'></ion-icon>
+            <input
+                type='text'
+                className='header__left--search'
+                id='search'
+                name='search'
+                placeholder='Find'
             />
-            <h2>todoist</h2>
         </div>
-        <ul className='header__menu'>
-            <li>
-                <Link to='/login' className='header__menu--login'>Login</Link>
+        <ul className='header__right'>
+            <li className='header__right--item'>
+                <ion-icon name='add-outline' class='header__icon'></ion-icon>
             </li>
-            <li>
-                <Link to='/signup' className='header__menu--signup'>Signup</Link>
+            <li className='header__right--item'>
+            <ion-icon name="notifications" class='header__icon'></ion-icon>
             </li>
+            <li className='header__right--item'></li>
         </ul>
     </header>
 )

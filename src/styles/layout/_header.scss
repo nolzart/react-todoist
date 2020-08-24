@@ -1,42 +1,46 @@
 .header {
-    align-items: center;
-    box-shadow: 0.5rem 0 1.2rem rgba(0, 0, 0, 0.3);
-    background-color: $color-primary;
+    background-color: $color-primary-light;
+    width: 100%;
+    padding: 1rem 5rem;
     display: flex;
     justify-content: space-between;
-    padding: 1.2rem 2rem;
-    width: 100%;
 
-    &__brand {
-        align-items: flex-end;
-        display: flex;
-        color: $color-white;
-        cursor: pointer;
-        font-weight: 900;
+    &__left {
+        width: auto;
+        &--search {
+            background: rgba(255, 255, 255, .2);
+            border: none;
+            padding: .6rem 1.5rem;
+            outline: none;
+            border-radius: 2px;
+            color: $color-white;
 
-        &--logo {
-            background-color: transparent;
-            margin-right: 0.5rem;
-            width: 3rem;
+            &::placeholder {
+                color: $color-white;
+            }
         }
     }
 
-    &__menu {
+    &__right {
+        width: 10%;
+    }
+    &__left,
+    &__right {
         display: flex;
         justify-content: space-between;
-        width: 8%;
+        align-items: center;
+    }
 
-        &--login {
-            color: $color-white;
-        }
-
-        &--signup {
-            color: $color-white;
-        }
-
-        &--login:hover,
-        &--signup:hover {
-            border-bottom: 2px solid $color-white;
+    
+    &__icon {
+        width: 2rem;
+        height: 2rem;
+        padding: .5rem;
+        border-radius: 2px;
+        color: $color-white;
+        cursor: pointer;
+        &:hover {
+            background: rgba(255, 255, 255, .2);
         }
     }
 }

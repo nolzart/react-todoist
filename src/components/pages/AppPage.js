@@ -1,10 +1,19 @@
 import React from 'react'
 
+//components
+import Header from '../layout/Header'
+import Sidebar from '../Sidebar'
+import Editor from '../Tasks'
+
 const AppPage = () => {
     return (
-        <div>
-            hello
-        </div>
+        <>
+            <Header />
+            <div className="grid">
+                <Sidebar />
+                <Editor />
+            </div>
+        </>
     )
 }
 

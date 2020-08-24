@@ -1,3 +1,46 @@
+.header-home {
+    align-items: center;
+    box-shadow: 0.5rem 0 1.2rem rgba(0, 0, 0, 0.3);
+    background-color: $color-primary;
+    display: flex;
+    justify-content: space-between;
+    padding: 1.2rem 2rem;
+    width: 100%;
+
+    &__brand {
+        align-items: flex-end;
+        display: flex;
+        color: $color-white;
+        cursor: pointer;
+        font-weight: 900;
+
+        &--logo {
+            background-color: transparent;
+            margin-right: 0.5rem;
+            width: 3rem;
+        }
+    }
+
+    &__menu {
+        display: flex;
+        justify-content: space-between;
+        width: 8%;
+
+        &--login {
+            color: $color-white;
+        }
+
+        &--signup {
+            color: $color-white;
+        }
+
+        &--login:hover,
+        &--signup:hover {
+            border-bottom: 2px solid $color-white;
+        }
+    }
+}
+
 .main {
     margin: 0 auto;
     overflow: hidden;

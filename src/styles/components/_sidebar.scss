@@ -1,0 +1,82 @@
+.sidebar {
+    grid-column: 1/4;
+    padding: 2rem;
+    border-right: 1px solid $shading-gray;
+    margin: 2rem;
+    height: 100%;
+    overflow: hidden;
+
+    &__generic {
+        color: $gray-light-2;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+
+        &--item {
+            font-size: 1.6rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            &:not(:last-child) {
+                margin-bottom: 2rem;
+            }
+        }
+
+        &--icon {
+            width: 2rem;
+            height: 2rem;
+            font-weight: 400;
+            margin-right: 1rem;
+        }
+    }
+
+    &__middle {
+        width: 100%;
+        margin: 0;
+    
+        &__icon {
+            transition: all .3s ease;
+        }
+    }
+    &__projects {
+        align-items: center;
+        border: none;
+        border-bottom: 1px solid $gray-light-1;
+        border-radius: 2px;
+        background-color: $color-white;
+        cursor: pointer;
+        display: flex;
+        font-size: 1.4rem;
+        justify-content: space-between;
+        margin: 1rem 0;
+        outline: none;
+        width: 80%;
+        padding: 1.5rem 0;
+        transition: all .3s ease;
+        text-align: center;
+
+        span {
+            font-size: 2rem;
+            font-weight: 400;
+            float: right;
+            color: $gray-light-2;
+            visibility: hidden;
+            margin-right: 2rem;
+            &:hover {
+                color: #333;
+            }
+        }
+
+        &:hover .sidebar__middle--icon{
+            transform: rotate(90deg);
+        }
+        &:hover span {
+            visibility: visible;
+        }
+        &:hover {
+            background-color: $shading-gray;
+        }
+    }
+}

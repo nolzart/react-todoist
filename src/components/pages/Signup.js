@@ -11,10 +11,10 @@ const Signup = () => {
                 </Link>
                 <h2 className='heading-secondary'>Sign up</h2>
                 <a href='/login-google' className='login__container--link'>
-                    <img src="img/google-color.png" alt="Google icon"/> Continue with Google
+                    <img src="img/google-color.svg" alt="Google icon"/> Continue with Google
                 </a>
                 <a href='/login-facebbok' className='login__container--link'>
-                <img src="img/facebook-square-color.png" alt="Google icon"/> Continue with Facebook
+                <img src="img/facebook-square-color.svg" alt="Google icon"/> Continue with Facebook
                 </a>
                 <div className='separator-or'>
                     <span>OR</span>

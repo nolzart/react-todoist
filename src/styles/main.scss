@@ -7,8 +7,13 @@
 @import 'base/utilities';
 
 @import 'components/buttons';
+@import 'components/forms';
+@import 'components/sidebar';
 
 @import 'layout/header';
+@import 'layout/grid';
 
+@import 'pages/tasks';
+@import 'pages/task';
 @import 'pages/home';
 @import 'pages/login';
