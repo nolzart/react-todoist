@@ -1,0 +1,63 @@
+.projects {
+    &__interaction {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        background-color: $color-white;
+        border-bottom: 1px solid $shading-gray;
+        border-radius: 3px;
+        margin: 1rem 0;
+        padding: 1rem;
+
+        &:hover,
+        &:hover &--toggle,
+        &:hover &--add {
+            background-color: $shading-gray;
+        }
+
+        &:hover &--add {
+            opacity: 1;
+        }
+
+        &--toggle {
+            display: flex;    
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1.6rem;
+            background-color: $color-white;
+            border: none;
+            outline: none;
+        }
+
+        &--add {
+            cursor: pointer;
+            height: 2rem;
+            width: 2rem;
+            text-align:center;
+            font-weight: normal;
+            opacity: 0;
+
+
+
+            &:hover {
+                opacity: 1;
+                box-shadow: 0px 1px 1px rgba(0,0,0, .2);
+            }
+        }
+    }
+    &__container {
+        width: 100%;
+        padding: 0 1rem;    
+    }
+}
+
+.project {
+    display: block;
+    width: 100%;
+    padding: 1rem 0;
+
+    &__name {
+        color: #333;
+    }
+}

@@ -53,6 +53,19 @@
         &--title {
             margin-top:.5rem;
             margin-left: .5rem;
+            padding: .5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
+    }
+    &__checkbox--checked {
+        display: inline-block;
+        align-self: center;
+        height: 1.5rem;
+        width: 1.5rem;
+        border-radius: 50%;
+        border: 1px solid $color-primary;
+        padding: .5rem;
     }
 }

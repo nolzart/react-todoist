@@ -9,12 +9,12 @@ const Task = () => {
                     htmlFor='task-complete'
                 >
                     <input
-                        type='radio'
+                        type='checkbox'
                         id='task-complete'
                         name='task-complete'
                         className='form__checkbox'
                     />
-                    <span className='form__checkbox--checked'></span>
+                    <span className='task__checkbox--checked'></span>
                     Task title
                 </label>
             </div>

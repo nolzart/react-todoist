@@ -2,8 +2,8 @@ import React from 'react'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 //Components
 import Home from './components/pages/Home'
-import Login from './components/pages/Login'
-import Signup from './components/pages/Signup'
+import Login from './components/auth/Login'
+import Signup from './components/auth/Signup'
 import SignupStepTwo from './components/pages/SignupStepTwo'
 import AppPage from './components/pages/AppPage'
 

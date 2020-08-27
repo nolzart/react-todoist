@@ -62,7 +62,8 @@
         }
     }
 
-    &__checkbox:checked + &__checkbox--checked  {
+    &__checkbox:checked + &__checkbox--checked,
+    &__checkbox:checked + .task__checkbox--checked  {
         background: $color-primary;
     }
 }
