@@ -9,7 +9,7 @@ import firebase from './config/firebase'
 
 import './styles/main.scss'
 import App from './App'
-import rootReducer from './store/rootReducer'
+import rootReducer from './components/store/rootReducer'
 
 const rrfConfig = {
     userProfile: 'users',

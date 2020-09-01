@@ -1,5 +1,6 @@
 .projects {
     &__interaction {
+        cursor: pointer;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -21,6 +22,7 @@
         }
 
         &--toggle {
+            cursor: pointer;
             display: flex;    
             justify-content: space-between;
             align-items: center;
@@ -38,8 +40,6 @@
             font-weight: normal;
             opacity: 0;
 
-
-
             &:hover {
                 opacity: 1;
                 box-shadow: 0px 1px 1px rgba(0,0,0, .2);
@@ -50,14 +50,59 @@
         width: 100%;
         padding: 0 1rem;    
     }
+
+    &__inner--btn {
+        background: #fff;
+        color: #999;
+        border: none;
+        outline: none;
+        font-size: 1.3rem;
+        font-weight: 400;
+        width: 100%;
+        font-family: 'lato' sans-serif;
+        padding: 1rem 0;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        cursor: pointer;
+
+        &:hover {
+            color: $color-primary;
+        }
+
+        &:hover > .projects__inner--icon {
+            background: $color-primary;
+            color: #fff;
+        }
+    }
+
+    &__inner--icon {
+        text-align: center;
+        display: block;
+        height: 1.8rem;
+        width: 1.8rem;
+        line-height: 1.8rem;
+        margin-right: 1rem;
+        font-size: 2rem;
+        border-radius: 50%;
+    }
 }
 
 .project {
     display: block;
     width: 100%;
     padding: 1rem 0;
+    cursor: pointer;
 
     &__name {
-        color: #333;
+        color: #202020;
+        font-weight: bold;
+    }
+
+    &__icon {
+        @extend .drop-menu__option--icon;
+        justify-self: flex-start;
+        align-self: center;
+        margin-left: 2px;
     }
 }

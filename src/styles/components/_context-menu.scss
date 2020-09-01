@@ -1,0 +1,43 @@
+.context-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    z-index: 99;
+    background-color: transparent;
+
+    &__container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 10000;
+        width: 25rem;
+        background-color: $color-white;
+        border: 1px solid $shading-gray;    
+        padding: 1rem;
+        font-weight: 300;
+        color: #202020;
+    }
+
+    &__item {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 1rem 0;
+
+        &--icon {
+            font-weight: bold;
+            padding: 0 .5rem;
+            display: flex;
+            align-items: center;
+        }
+        &:hover {
+            background-color: $shading-gray;
+        }
+    }
+    &__separator {
+        margin: .6rem 0;
+        border-bottom: 1px solid $shading-gray;
+    }
+}

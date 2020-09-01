@@ -5,7 +5,7 @@ import Home from './components/pages/Home'
 import Login from './components/auth/Login'
 import Signup from './components/auth/Signup'
 import SignupStepTwo from './components/pages/SignupStepTwo'
-import AppPage from './components/pages/AppPage'
+import Content from './components/pages/Content'
 
 const App = () => {
     return (
@@ -15,7 +15,7 @@ const App = () => {
                 <Route exact path='/login' component={ Login } />
                 <Route exact path='/signup' component={ Signup } />
                 <Route exact path='/signup/step_two' component={ SignupStepTwo } />
-                <Route exact path='/app' component={ AppPage } />
+                <Route exact path='/app' component={ Content } />
             </Switch>
         </BrowserRouter>
     )

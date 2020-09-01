@@ -6,8 +6,12 @@
 @import 'base/typography';
 @import 'base/utilities';
 
+// @import 'components/delete-project';
+@import 'components/drop-menu';
 @import 'components/buttons';
+@import 'components/context-menu';
 @import 'components/forms';
+@import 'components/modal';
 @import 'components/projects';
 @import 'components/sidebar';
 

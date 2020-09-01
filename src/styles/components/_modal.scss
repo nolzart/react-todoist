@@ -1,0 +1,79 @@
+.modal {
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, .6) ;
+    top: 0;
+    left: 0;
+    z-index: 999;
+
+    &__container {
+        position: fixed;
+        top: 35%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color:  $color-white;
+        width: 30%;
+        border-radius: .5rem;
+        color: #202020;
+    }
+    &__header {
+        margin: 1rem 0;
+        font-size: 1.4rem;
+        font-weight: bold;
+        border-bottom: 1px solid $shading-gray;
+        padding: 1rem 0 1.5rem 2rem;
+    }
+    &__body {
+        margin: 1rem 0;
+        padding: 1rem 0;
+        border-bottom: 1px solid $shading-gray;
+    }
+    &__form--label {
+        display:block;
+        width: 90%;
+        margin: 0 auto;
+        font-weight: bold;
+        font-family: 'lato' sans-serif;
+    }
+
+    &__footer {
+        width: 90%;
+        margin: 0 auto;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        margin: .5rem 2rem;
+        
+    }
+
+    &__btn--cancel {
+        outline: none;
+        margin: .5rem;
+        width: auto;
+        padding: 0 1.5rem;
+        height: 3.5rem;
+        border-radius: .2rem;
+        border: 1px solid $shading-gray;
+        background-color: #f3f3f3;
+        color: #202020;
+        font-weight: bold;
+        cursor: pointer;
+
+        &:hover {
+            border: 1px solid #333;
+        }
+    }
+    &__btn {
+        width: auto;
+        outline: none;
+        padding: 0 1rem;
+        height: 3.5rem;
+        background-color: #db4c3f;
+        border: 1px solid #db4c3f;
+        border-radius: .2rem;
+        color: #fff;
+        font-weight: bold;
+        cursor: pointer;
+    }
+}

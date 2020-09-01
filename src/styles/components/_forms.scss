@@ -1,4 +1,6 @@
-
+::select-ms-expand {
+    display: none;
+}
 .form {
     &__group {
         margin-bottom: 1rem;
@@ -11,6 +13,16 @@
         transition: all .3s ease;
     }
 
+    &__input--border {
+        width: 90%;
+        display: block;
+        padding: .5rem 0;
+        margin: 1rem auto;
+        border: 1px solid $gray-light-1;
+        outline: none;
+        border-radius: .3rem;
+    }
+    
     &__input {
         border: none;
         border-bottom: 2px solid rgb(117, 113, 113);
@@ -32,7 +44,6 @@
             cursor: pointer;
             box-shadow: 0px 0.1rem 0.2rem rgba(0,0,0,.2);
         }
-
         &:placeholder-shown + .form__label {
             opacity: 0;
             top: -1rem;
@@ -65,6 +76,53 @@
     &__checkbox:checked + &__checkbox--checked,
     &__checkbox:checked + .task__checkbox--checked  {
         background: $color-primary;
+    }
+
+
+    &__checkbox-switched {
+        width: 90%;
+        margin: 0 auto;
+        &--title {
+            font-family: 'lato';
+            font-weight: bold;
+            font-size: 1.4rem;
+            padding: 1rem 0;
+        }
+        &--label {
+            position: relative;
+            margin: 1rem 0;
+            cursor: pointer;
+        }
+
+        &--input {
+            appearance: none;
+            display: none;
+
+            &:checked ~ .form__checkbox-switched--indicator{
+                left: 3.3rem;
+            }
+        }
+
+        &--span {
+            position: relative;
+            display: block;
+            width: 5rem;
+            height: 1.8rem;
+            background: #aaaaaa;
+            border-radius: 4rem;
+        }
+
+        &--indicator {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 1.7rem;
+            width: 1.7rem;
+            transform: scale(.8);
+            background-color: #fff;
+            border-radius: 50%;
+            transition: left .3s ease;
+        }
     }
 }
     
