@@ -35,13 +35,13 @@ export const getProjects = () => async (dispatch, getState, { getFirestore }) =>
     }
 }
 
-export const updateProject = (projectId, favorite, archived, projectName, projectColor) => async (
+export const updateProject = ({projectId, favorite, archived, projectName, projectColor}) => async (
     dispatch,
     getState,
     { getFirestore }
 ) => {
     const firestore = getFirestore()
-
+    
     try {
         const projectDoc = await firestore.collection('projects').doc(projectId).get()
         const updatedProject = {

@@ -1,12 +1,8 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { Link } from 'react-router-dom'
 
 const SignupStepTwo = () => {
-    const toggleShowPassword = e => {
-        let inputType = e.target.parentNode.childNodes[1]
-        e.target.name = inputType.type === 'password' ? 'eye-outline' : 'eye-off-outline'
-        inputType.type = inputType.type === 'password' ? 'text' : 'password'
-    }
+    const [showPassword, setShowPassword] = useState(false)
     return (
         <section className='login'>
             <div className='login__container'>
@@ -34,12 +30,12 @@ const SignupStepTwo = () => {
                     </div>
                     <div className='form__group'>
                         <ion-icon
-                            name='eye-off-outline'
+                            name={showPassword ? 'eye-outline' : 'eye-off-outline'}
                             class='form__input--show-password'
-                            onClick={toggleShowPassword}
+                            onClick={() => setShowPassword(!showPassword)}
                         ></ion-icon>
                         <input
-                            type='password'
+                            type={showPassword ? 'text' : 'password'}
                             className='form__input'
                             name='password'
                             id='password'

@@ -6,8 +6,10 @@
     width: 100vw;
     z-index: 99;
     background-color: transparent;
+    pointer-events: none;
 
     &__container {
+        pointer-events: fill;
         position: absolute;
         top: 0;
         left: 0;
@@ -25,6 +27,7 @@
         justify-content: flex-start;
         align-items: center;
         padding: 1rem 0;
+        cursor:pointer;
 
         &--icon {
             font-weight: bold;

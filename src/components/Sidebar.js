@@ -5,6 +5,7 @@ import * as projectActions from './store/actions/projectActions'
 import * as taskActions from './store/actions/taskActions'
 // components
 import Projects from './Projects/Projects'
+import {genericsData} from './constanst'
 
 const Sidebar = () => {
     const dispatch = useDispatch()
@@ -19,31 +20,14 @@ const Sidebar = () => {
         getProjects()
     }, [])
 
+    
+
     useEffect(() => {
         console.log('Get Tasks')
         getTasks()
     }, [selectedProject, projects])
 
-    const genericsData = [
-        {
-            name: 'Inbox',
-            icon: 'file-tray',
-            color: 'u-color-blue',
-            projectId: 'inbox',
-        },
-        {
-            name: 'Today',
-            icon: 'today-outline',
-            color: 'u-color-green',
-            projectId: 'today',
-        },
-        {
-            name: 'Upcoming',
-            icon: 'calendar-outline',
-            color: 'u-color-purple',
-            projectId: 'upcoming',
-        },
-    ]
+    
     return (
         <aside className='sidebar'>
             <ul className='sidebar__generic u-mb-medium'>

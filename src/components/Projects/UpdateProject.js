@@ -1,14 +1,16 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 //actions
-import * as projectActions from '../store/actions/projectActions'
+import * as projectActions from '../store/actions/projectActions'   
 //components
 import Modal from '../Modal'
 import SelectColor from '../SelectColor'
 
-const AddProject = ({ activeModal, setActiveModal }) => {
+const UpdateProject = ({ activeModal, setActiveModal, projectId }) => {
     const dispatch = useDispatch()
-    const addProject = project => dispatch(projectActions.addProject(project))
+    const updateProject = project =>
+        dispatch(projectActions.updateProject({ ...project, projectId }))
+        
     const [inputValues, setInputValues] = useState({
         projectName: '',
         projectColor: '',
@@ -17,17 +19,17 @@ const AddProject = ({ activeModal, setActiveModal }) => {
 
     const handleSubmit = () => {
         setActiveModal('')
-        addProject(inputValues)
+        updateProject(inputValues)
     }
     return (
         <Modal
-            modalTitle='Add Project'
-            modalConductor='ADD_PROJECT'
-            buttonTitle='Add'
+            modalTitle='Update Project'
+            buttonTitle='Update'
             activeModal={activeModal}
             setActiveModal={setActiveModal}
-            showBody={true}
+            modalConductor='UPDATE_PROJECT'
             handleSubmit={handleSubmit}
+            showBody={true}
         >
             <form>
                 <div className='form__group'>
@@ -53,7 +55,10 @@ const AddProject = ({ activeModal, setActiveModal }) => {
                     <label htmlFor='project-name' className='modal__form--label'>
                         Project color
                     </label>
-                    <SelectColor inputValues={inputValues} setInputValues={setInputValues} />
+                    <SelectColor
+                        inputValues={inputValues}
+                        setInputValues={setInputValues}
+                    />
                 </div>
                 <div className='form__checkbox-switched'>
                     <h1 className='form__checkbox-switched--title'>Favorite</h1>
@@ -79,4 +84,4 @@ const AddProject = ({ activeModal, setActiveModal }) => {
     )
 }
 
-export default AddProject
+export default UpdateProject

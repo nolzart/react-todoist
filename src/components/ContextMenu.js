@@ -1,26 +1,33 @@
-import React  from 'react'
+import React from 'react'
 import { useDispatch } from 'react-redux'
 //actions
 import * as projectActions from './store/actions/projectActions'
 //components
 
-
-const ContextMenu = ({ show, setShow, top, left, projectId }) => {
+const ContextMenu = ({ top, left, projectId, activeModal, setActiveModal }) => {
     const dispatch = useDispatch()
 
     const updateProject = (
-        id,
+        projectId,
         favorite = null,
         archived = null,
         projectName = null,
         projectColor = null
-    ) => dispatch(projectActions.updateProject(id, favorite, archived, projectName, projectColor))
-    
+    ) => {
+        setActiveModal('')
+        dispatch(
+            projectActions.updateProject({
+                projectId,
+                favorite,
+                archived,
+                projectName,
+                projectColor,
+            })
+        )
+    }
+
     return (
-        <div
-            className={`context-menu ${!show.showContextMenu ? 'u-display-none' : ''}`}
-            // onClick={() => setShow({ ...show, showContextMenu: false })}
-        >
+        <div className={`context-menu ${activeModal !== 'CONTEXT_MENU' && 'u-display-none'}`}>
             <div className='context-menu__container' style={{ top: `${top}px`, left: `${left}px` }}>
                 <div className='context-menu__item'>
                     <span className='context-menu__item--icon'>&uarr;</span>
@@ -31,7 +38,10 @@ const ContextMenu = ({ show, setShow, top, left, projectId }) => {
                     <span className='context-menu__item--text'>Add project below</span>
                 </div>
                 <div className='context-menu__separator'></div>
-                <div className='context-menu__item'>
+                <div
+                    className='context-menu__item'
+                    onClick={() => setActiveModal('UPDATE_PROJECT')}
+                >
                     <span className='context-menu__item--icon'>
                         <ion-icon name='pencil-outline'></ion-icon>
                     </span>
@@ -68,17 +78,28 @@ const ContextMenu = ({ show, setShow, top, left, projectId }) => {
                         className='context-menu__item--text'
                         onClick={() => updateProject(projectId, null, true)}
                     >
-                        Archive
+                        Archive project
+                    </span>
+                </div>
+                <div className='context-menu__item'>
+                    <span className='context-menu__item--icon' style={{transform: 'rotate(180deg)'}}>
+                        <ion-icon name='archive-outline'></ion-icon>
+                    </span>
+                    <span
+                        className='context-menu__item--text'
+                        onClick={() => updateProject(projectId, null, false)}
+                    >
+                        Unarchive project
                     </span>
                 </div>
                 <div
                     className='context-menu__item'
-                    onClick={() => setShow({...show, showDeleteProject: !show.showDeleteProject, showContextMenu: false})}
+                    onClick={() => setActiveModal('DELETE_PROJECT')}
                 >
                     <span className='context-menu__item--icon'>
                         <ion-icon name='trash-outline'></ion-icon>
                     </span>
-                    <span className='context-menu__item--text'>Delete</span>
+                    <span className='context-menu__item--text'>Delete project</span>
                 </div>
             </div>
         </div>

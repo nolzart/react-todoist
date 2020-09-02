@@ -5,11 +5,11 @@ import Header from '../layout/Header'
 import Sidebar from '../Sidebar'
 import Tasks from '../Tasks/Tasks'
 
-const AppPage = () => {
+const Content = () => {
     return (
         <>
             <Header />
-            <div className="grid">
+            <div className='grid'>
                 <Sidebar />
                 <Tasks />
             </div>
@@ -17,4 +17,4 @@ const AppPage = () => {
     )
 }
 
-export default AppPage
+export default Content

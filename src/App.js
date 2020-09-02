@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import Home from './components/pages/Home'
 import Login from './components/auth/Login'
 import Signup from './components/auth/Signup'
-import SignupStepTwo from './components/pages/SignupStepTwo'
+import SignupStepTwo from './components/auth/SignupStepTwo'
 import Content from './components/pages/Content'
 
 const App = () => {

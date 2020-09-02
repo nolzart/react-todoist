@@ -5,11 +5,7 @@ const Home = () => (
     <>
         <header className='header-home'>
             <div className='header-home__brand'>
-                <img
-                    src='img/logo.png'
-                    alt='Todoist logo'
-                    className='header-home__brand--logo'
-                />
+                <img src='img/logo.png' alt='Todoist logo' className='header-home__brand--logo' />
                 <h2>todoist</h2>
             </div>
             <ul className='header-home__menu'>

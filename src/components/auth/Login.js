@@ -1,12 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 const Login = () => {
-    const toggleShowPassword = e => {
-        let inputType = e.target.parentNode.childNodes[1]
-        e.target.name = inputType.type === 'password' ? 'eye-outline' : 'eye-off-outline'
-        inputType.type = inputType.type === 'password' ? 'text' : 'password'
-    }
+    const [showPassword, setShowPassword] = useState(false)
     return (
         <section className='login'>
             <div className='login__container'>
@@ -20,10 +16,7 @@ const Login = () => {
                     Continue with Google
                 </a>
                 <a href='/login-facebbok' className='login__container--link'>
-                    <img
-                        src='img/facebook-square-color.svg'
-                        alt='Google icon'
-                    />
+                    <img src='img/facebook-square-color.svg' alt='Google icon' />
                     Continue with Facebook
                 </a>
                 <div className='separator-or'>
@@ -45,12 +38,12 @@ const Login = () => {
                     </div>
                     <div className='form__group'>
                         <ion-icon
-                            name='eye-off-outline'
+                            name={showPassword ? 'eye-outline' : 'eye-off-outline'}
                             class='form__input--show-password'
-                            onClick={toggleShowPassword}
+                            onClick={() => setShowPassword(!showPassword)}
                         ></ion-icon>
                         <input
-                            type='password'
+                            type={showPassword ? 'text' : 'password'}
                             name='password'
                             id='password'
                             className='form__input form__input--password'
@@ -62,18 +55,14 @@ const Login = () => {
                         </label>
                     </div>
                     <button className='btn btn--large btn--red'>Log in</button>
-                    <label
-                        htmlFor='permanent-login'
-                        className='permanent-login'
-                    >
+                    <label htmlFor='permanent-login' className='permanent-login'>
                         <input
                             type='checkbox'
                             name='permanent-login'
                             id='permanent-login'
                             className='form__checkbox'
                         />
-                        <span className='form__checkbox--checked'></span>Keep me
-                        logged in
+                        <span className='form__checkbox--checked'></span>Keep me logged in
                     </label>
                 </form>
                 <a href='/ForgotPassword' className='login__container--forgot'>

@@ -1,20 +1,17 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 //components
 import Project from './SingleProject'
-import AddProject from './AddProject'
-import ContextMenu from '../ContextMenu'
+import ModalConductor from '../ModalConductor'
 import ArchivedProjects from './ArchivedProjects'
-import DeleteProject from './DeleteProject'
 
 const Projects = ({ projects, sectionName }) => {
     const [show, setShow] = useState({
         showProjects: false,
-        showAddProject: false,
-        showContextMenu: false,
         showArchivedProjects: false,
-        showDeleteProject: false,
     })
+
+    const [activeModal, setActiveModal] = useState('')
 
     const [mouseCoordinates, setMouseCoordinates] = useState({
         top: 0,
@@ -23,18 +20,23 @@ const Projects = ({ projects, sectionName }) => {
     const [projectId, setProjectId] = useState('')
     const handleMouseContext = e => {
         e.preventDefault()
-        setShow({ ...show, showContextMenu: !show.showContextMenu })
         setMouseCoordinates({
             left: e.clientX + 10,
             top: e.clientY - 100,
         })
+        setActiveModal(activeModal === '' ? 'CONTEXT_MENU': '' )
         setProjectId(e.target.id ? e.target.id : e.target.parentNode.id)
     }
 
     return (
         <div className='projects'>
-            <AddProject show={show} setShow={setShow} />
-            <DeleteProject show={show} setShow={setShow} projectId={projectId} />
+            <ModalConductor
+                activeModal={activeModal}
+                setActiveModal={setActiveModal}
+                projectId={projectId}
+                top={mouseCoordinates.top}
+                left={mouseCoordinates.left}
+            />
             <div className='projects__interaction'>
                 <button
                     className='projects__interaction--toggle'
@@ -50,33 +52,18 @@ const Projects = ({ projects, sectionName }) => {
                         {sectionName}
                     </div>
                 </button>
-                <span
-                    className='projects__interaction--add'
-                    role='button'
-                    onClick={() => setShow({ ...show, showAddProject: !show.showAddProject })}
-                >
+                <span className='projects__interaction--add' role='button' onClick={() => setActiveModal('ADD_PROJECT')}>
                     <ion-icon name='add-outline'></ion-icon>
                 </span>
             </div>
             <div className='projects__container' onContextMenu={handleMouseContext}>
-                <ContextMenu
-                    top={mouseCoordinates.top}
-                    left={mouseCoordinates.left}
-                    show={show}
-                    setShow={setShow}
-                    projectId={projectId}
-                />
+
                 {show.showProjects ? (
                     <div>
                         {projects.map(pro =>
                             !pro.archived ? <Project key={pro.id} project={pro} /> : null
                         )}
-                        <button
-                            className='projects__inner--btn'
-                            onClick={() =>
-                                setShow({ ...show, showAddProject: !show.showAddProject })
-                            }
-                        >
+                        <button className='projects__inner--btn' onClick={() => setActiveModal('ADD_PROJECT')}>
                             <span className='projects__inner--icon'>+</span>
                             <p>Add Project</p>
                         </button>
