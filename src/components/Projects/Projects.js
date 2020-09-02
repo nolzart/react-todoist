@@ -5,38 +5,13 @@ import Project from './SingleProject'
 import ModalConductor from '../ModalConductor'
 import ArchivedProjects from './ArchivedProjects'
 
-const Projects = ({ projects, sectionName }) => {
+const Projects = ({ projects, sectionName, activeModal, setActiveModal}) => {
     const [show, setShow] = useState({
         showProjects: false,
         showArchivedProjects: false,
     })
-
-    const [activeModal, setActiveModal] = useState('')
-
-    const [mouseCoordinates, setMouseCoordinates] = useState({
-        top: 0,
-        left: 0,
-    })
-    const [projectId, setProjectId] = useState('')
-    const handleMouseContext = e => {
-        e.preventDefault()
-        setMouseCoordinates({
-            left: e.clientX + 10,
-            top: e.clientY - 100,
-        })
-        setActiveModal(activeModal === '' ? 'CONTEXT_MENU': '' )
-        setProjectId(e.target.id ? e.target.id : e.target.parentNode.id)
-    }
-
     return (
         <div className='projects'>
-            <ModalConductor
-                activeModal={activeModal}
-                setActiveModal={setActiveModal}
-                projectId={projectId}
-                top={mouseCoordinates.top}
-                left={mouseCoordinates.left}
-            />
             <div className='projects__interaction'>
                 <button
                     className='projects__interaction--toggle'
@@ -56,7 +31,7 @@ const Projects = ({ projects, sectionName }) => {
                     <ion-icon name='add-outline'></ion-icon>
                 </span>
             </div>
-            <div className='projects__container' onContextMenu={handleMouseContext}>
+            <div className='projects__container'>
 
                 {show.showProjects ? (
                     <div>

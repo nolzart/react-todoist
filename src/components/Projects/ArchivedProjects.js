@@ -7,7 +7,7 @@ const ArchivedProjects = ({ show }) => {
         <div className={`${!show ? 'u-display-none' : null}`}>
             {projects.map(project =>
                 project.archived ? (
-                    <section key={project.id} className='project' id={project.id}>
+                    <section key={project.id} className='project' id={project.id} data-menu='archived'>
                         <span
                             className='project__icon'
                             style={{ backgroundColor: project.projectColor }}
