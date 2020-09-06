@@ -6,7 +6,14 @@
     top: 0;
     left: 0;
     z-index: 999;
-
+    &__close {
+        font-size: 3rem;
+        display: block;
+        margin: 0;
+        font-weight: 400;
+        color: #555;
+        cursor: pointer;
+    }
     &__container {
         position: fixed;
         top: 35%;
@@ -16,18 +23,24 @@
         width: 30%;
         border-radius: .5rem;
         color: #202020;
+
+        &--large {
+            width: 54rem; 
+            top: 25%;
+        }
     }
     &__header {
         margin: 1rem 0;
         font-size: 1.4rem;
         font-weight: bold;
-        border-bottom: 1px solid $shading-gray;
-        padding: 1rem 0 1.5rem 2rem;
+        padding: 1rem 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
     }
     &__body {
         margin: 1rem 0;
         padding: 1rem 0;
-        border-bottom: 1px solid $shading-gray;
     }
     &__form--label {
         display:block;
@@ -39,12 +52,14 @@
 
     &__footer {
         width: 90%;
-        margin: 0 auto;
+        margin: .5rem auto 2rem auto;
         display: flex;
         justify-content: flex-end;
         align-items: center;
-        margin: .5rem 2rem;
-        
+        &--flex-start {
+            justify-content: flex-start; 
+            margin: 0.3rem auto;
+        }
     }
 
     &__btn--cancel {

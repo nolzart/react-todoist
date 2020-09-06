@@ -1,6 +1,7 @@
-import React from 'react'
+import React, {useState} from 'react'
 
-const Header = () => (
+const Header = ({activeModal, setActiveModal}) => {
+    return (
     <header className='header'>
         <div className='header__left'>
             <ion-icon name='grid-outline' class='header__icon'></ion-icon>
@@ -14,7 +15,7 @@ const Header = () => (
             />
         </div>
         <ul className='header__right'>
-            <li className='header__right--item'>
+            <li className='header__right--item' onClick={() => setActiveModal('QUICK_ADD_TASK')}>
                 <ion-icon name='add-outline' class='header__icon'></ion-icon>
             </li>
             <li className='header__right--item'>
@@ -23,6 +24,6 @@ const Header = () => (
             <li className='header__right--item'></li>
         </ul>
     </header>
-)
+)}
 
 export default Header

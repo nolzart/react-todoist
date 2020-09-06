@@ -8,16 +8,16 @@ import Projects from './Projects/Projects'
 import ModalConductor from './ModalConductor'
 import { genericsData } from './constanst'
 
-const Sidebar = () => {
+const Sidebar = ({ activeModal, setActiveModal }) => {
     const dispatch = useDispatch()
     const selectedProject = useSelector(state => state.firestore.ordered.projects)
 
     const changeProject = selectedProject => dispatch(projectActions.changeProject(selectedProject))
     const getProjects = () => dispatch(projectActions.getProjects())
     const getTasks = () => dispatch(taskActions.getTasks())
+    
     const projects = useSelector(state => state.projects.projects)
 
-    const [activeModal, setActiveModal] = useState('')
     const [section, setSection] = useState('')
     const [mouseCoordinates, setMouseCoordinates] = useState({
         top: 0,
@@ -72,22 +72,23 @@ const Sidebar = () => {
                         <span>{generic.name}</span>
                     </li>
                 ))}
-                {projects.map(project =>
-                    project.favorite && (
-                        <li
-                            className='sidebar__generic--item'
-                            id={project.id}
-                            data-menu='favorites'
-                            key={project.id}
-                            onClick={() => changeProject(project.projectName.toLoweCase())}
-                        >
-                            <span
-                                className='project__icon'
-                                style={{ backgroundColor: project.projectColor }}
-                            ></span>
-                            <span>{project.projectName}</span>
-                        </li>
-                    ) 
+                {projects.map(
+                    project =>
+                        project.favorite && (
+                            <li
+                                className='sidebar__generic--item'
+                                id={project.id}
+                                data-menu='favorites'
+                                key={project.id}
+                                onClick={() => changeProject(project.projectName.toLoweCase())}
+                            >
+                                <span
+                                    className='project__icon'
+                                    style={{ backgroundColor: project.projectColor }}
+                                ></span>
+                                <span>{project.projectName}</span>
+                            </li>
+                        )
                 )}
             </ul>
             <div className='sidebar__middle'>

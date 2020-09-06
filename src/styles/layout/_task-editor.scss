@@ -1,0 +1,74 @@
+.task-editor {
+    width: 90%;
+    margin: 0 auto;
+    border: 1px solid $shading-gray;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 0;
+    position: relative;
+
+    &__input {
+        display: block;
+        padding: .5rem;
+        border: none;
+        outline: none;
+
+        &:focus .task-editor{
+            border: 1px solid gray;
+        }
+    }
+
+    &__buttons {
+        display: flex;
+        justify-content: space-between;
+        padding: 0 1rem;
+
+        &--left {
+            display: flex;
+            align-items: center;
+        }
+        &--right {
+            display: flex;
+            align-items: center;
+        }
+    }
+
+    &__btn {
+        background: $color-white;
+        border: 1px solid $shading-gray;
+        border-radius: 5px;
+        padding: .5rem;
+        margin: 0 3px;
+        cursor: pointer;
+        color:#555;
+
+        &--right {
+            background: $color-white;
+            border: none;
+            padding: .5em;
+            margin: 3px;
+            color: $gray-light-2;
+            cursor: pointer;
+            color:#555;
+        }
+
+        &--icon {
+            width: 1.7rem;
+            height: 1.7rem;
+        }
+    }
+
+    &__calendar-container {
+        position: absolute;
+        top: 6.8rem;
+        left: -2rem;
+    }
+}
+
+.separator {
+    margin: 1rem 0;
+    width: 100%;
+    display:block;
+    border-bottom: 1px solid #ddd;
+}
