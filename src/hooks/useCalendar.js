@@ -27,6 +27,12 @@ const useCalendar = () => {
         newDateContext = moment(new Date())
         setDateContext(newDateContext)
     }
+    const selectDay = day => {
+        let newDateContext = Object.assign({}, dateContext)
+        newDateContext = moment(newDateContext).date(day)
+        console.log('function selct day')
+        setDateContext(newDateContext)
+    }
 
     const prevLastDay = () => {
         let newDateContext = Object.assign({}, dateContext)
@@ -62,7 +68,17 @@ const useCalendar = () => {
         }
         setDays(newDays)
     }, [dateContext])
-    return [dateContext, days, today, tomorrow, nextWeek, prevMonth, nextMonth, actualMonth]
+    return [
+        dateContext,
+        days,
+        today,
+        tomorrow,
+        nextWeek,
+        prevMonth,
+        nextMonth,
+        actualMonth,
+        selectDay,
+    ]
 }
 
 export default useCalendar

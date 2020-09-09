@@ -4,22 +4,35 @@
     position: relative;
     user-select: none;
 
-    &__default-option{
+    &__default-option {
         border: 1px solid $gray-light-1;
-        background: #fff;
+        background-color: $color-white;
         border-radius: 5px;
         position: relative;
         cursor: pointer;
         color: $gray-light-2;
 
-        li{
-            padding: .5rem 0;
+        li {
+            padding: 0.5rem 0;
             color: #202020;
             font-weight: 400;
         }
     }
 
+    &__filter-option {
+        width: 100%;
+        outline: none;
+        height: 3rem;
+        font-size: $default-font-size;
+        border: 1px solid $gray-light-1;
+        border-top-left-radius: .5rem;
+        border-top-right-radius: .5rem;
+        padding:2rem 0;
+        background-color: $color-white;
+    }
+
     &__select {
+        border: 1px solid #ddd;
         position: absolute;
         top: 3.2rem;
         left: 0;
@@ -29,34 +42,32 @@
         overflow-y: scroll;
         background: #fff;
         border-radius: 5px;
-        transition: all .4s ease;
+        transition: all 0.4s ease;
         z-index: 99;
 
-
         li {
-            padding: .5rem 0rem;
+            padding: 0.5rem 0rem;
             cursor: pointer;
             color: #202020;
             font-weight: 400;
 
-            &:hover{
+            &:hover {
                 background: $shading-gray;
             }
         }
     }
 
-    
     .active {
         height: 30rem;
         opacity: 1;
     }
 
-    &__option{
+    &__option {
         display: flex;
         align-items: center;
         justify-content: flex-start;
 
-        &--icon{
+        &--icon {
             display: inline-block;
             height: 1.3rem;
             width: 1.3rem;

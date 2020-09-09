@@ -9,6 +9,7 @@
     padding: 1.5rem 6rem;
     transition: all .3s ease;
     text-align: center;
+    background-color: none;
 
     &:hover {
         transform: scale(1.03) translateY(-.2rem);
@@ -39,5 +40,18 @@
 
     &--no-margin {
         margin: 0 auto;
+    }
+    &--outline {
+        background: none;
+        outline: none;
+        font-size: $default-font-size;
+        color: $gray-light-2;
+        border: none;
+        font-family: 'Lato', sans-serif;
+        margin: 1rem;
+        cursor: pointer;
+        &:hover {
+            border-bottom: 1px solid $gray-light-2;
+        }
     }
 }

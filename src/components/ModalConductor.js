@@ -6,7 +6,7 @@ import AddProject from './Projects/AddProject'
 import UpdateProject from './Projects/UpdateProject'
 import DeleteProject from './Projects/DeleteProject'
 
-import AddTask from './Tasks/AddTask'
+import AddTask from './Tasks/QuickAddTask'
 
 const ModalConductor = props => {
     switch (props.activeModal) {

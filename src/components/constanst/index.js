@@ -25,18 +25,18 @@ export const genericsData = [
         name: 'Inbox',
         icon: 'file-tray',
         color: 'u-color-blue',
-        projectId: 'inbox',
+        id: 'inbox',
     },
     {
         name: 'Today',
         icon: 'today-outline',
         color: 'u-color-green',
-        projectId: 'today',
+        id: 'today',
     },
     {
         name: 'Upcoming',
         icon: 'calendar-outline',
         color: 'u-color-purple',
-        projectId: 'upcoming',
+        id: 'upcoming',
     },
 ]

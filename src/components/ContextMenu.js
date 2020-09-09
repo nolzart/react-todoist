@@ -1,29 +1,28 @@
 import React from 'react'
-import { useDispatch } from 'react-redux'
-//actions
-import * as projectActions from './store/actions/projectActions'
-
+import { useFirestore } from 'react-redux-firebase'
 
 const ContextMenu = ({ top, left, projectId, activeModal, setActiveModal, section }) => {
-
-    const dispatch = useDispatch()
-    const updateProject = (
-        projectId,
+    const firestore = useFirestore()
+    const updateProject = async ({
+        projectName = null,
+        projectColor = null,
         favorite = null,
         archived = null,
-        projectName = null,
-        projectColor = null
-    ) => {
-        setActiveModal('')
-        dispatch(
-            projectActions.updateProject({
-                projectId,
-                favorite,
-                archived,
-                projectName,
-                projectColor,
-            })
-        )
+    }) => {
+        try {
+            const projectDoc = await firestore.collection('projects').doc(projectId).get()
+            const updatedProject = {
+                ...projectDoc.data(),
+                projectName: projectName ?? projectDoc.data().projectName,
+                projectColor: projectColor ?? projectDoc.data().projectColor,
+                favorite: favorite ?? projectDoc.data().favorite,
+                archived: archived ?? projectDoc.data().archived,
+            }
+            await firestore.collection('projects').doc(projectId).update(updatedProject)
+            setActiveModal('')
+        } catch (err) {
+            console.log(err)
+        }
     }
     if (section === 'favorites') {
         return (
@@ -55,7 +54,7 @@ const ContextMenu = ({ top, left, projectId, activeModal, setActiveModal, sectio
                 </div>
             </div>
         )
-    } else if ( section === 'archived') {
+    } else if (section === 'archived') {
         return (
             <div className={`context-menu ${activeModal !== 'CONTEXT_MENU' && 'u-display-none'}`}>
                 <div

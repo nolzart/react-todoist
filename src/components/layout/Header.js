@@ -1,6 +1,6 @@
-import React, {useState} from 'react'
+import React from 'react'
 
-const Header = ({activeModal, setActiveModal}) => {
+const Header = ({ setActiveModal}) => {
     return (
     <header className='header'>
         <div className='header__left'>

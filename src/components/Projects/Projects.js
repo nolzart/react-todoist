@@ -1,11 +1,9 @@
-import React, { useState, useEffect } from 'react'
-
+import React, { useState } from 'react'
 //components
 import Project from './SingleProject'
-import ModalConductor from '../ModalConductor'
 import ArchivedProjects from './ArchivedProjects'
 
-const Projects = ({ projects, sectionName, activeModal, setActiveModal}) => {
+const Projects = ({ projects, sectionName, setActiveModal}) => {
     const [show, setShow] = useState({
         showProjects: false,
         showArchivedProjects: false,

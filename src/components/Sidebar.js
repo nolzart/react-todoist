@@ -1,28 +1,22 @@
-import React, { useState, useEffect } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
-// actions
-import * as projectActions from './store/actions/projectActions'
-import * as taskActions from './store/actions/taskActions'
+import React, { useState } from 'react'
+import { useFirestoreConnect } from 'react-redux-firebase'
+import { useSelector } from 'react-redux'
 // components
 import Projects from './Projects/Projects'
 import ModalConductor from './ModalConductor'
 import { genericsData } from './constanst'
 
-const Sidebar = ({ activeModal, setActiveModal }) => {
-    const dispatch = useDispatch()
-    const selectedProject = useSelector(state => state.firestore.ordered.projects)
+const Sidebar = ({ activeModal, setActiveModal, changeActiveProject }) => {
+    useFirestoreConnect(['projects'])
 
-    const changeProject = selectedProject => dispatch(projectActions.changeProject(selectedProject))
-    const getProjects = () => dispatch(projectActions.getProjects())
-    const getTasks = () => dispatch(taskActions.getTasks())
-    
-    const projects = useSelector(state => state.projects.projects)
+    const projects = useSelector(state => state.firestore.ordered.projects)
 
     const [section, setSection] = useState('')
     const [mouseCoordinates, setMouseCoordinates] = useState({
         top: 0,
         left: 0,
     })
+
     const [projectId, setProjectId] = useState('')
     const handleMouseContext = e => {
         const id = e.target.id ? e.target.id : e.target.parentNode.id
@@ -39,15 +33,6 @@ const Sidebar = ({ activeModal, setActiveModal }) => {
         }
     }
 
-    useEffect(() => {
-        getProjects()
-    }, [])
-
-    useEffect(() => {
-        console.log('Get Tasks')
-        getTasks()
-    }, [selectedProject, projects])
-
     return (
         <aside className='sidebar' onContextMenu={handleMouseContext}>
             <ModalConductor
@@ -62,9 +47,9 @@ const Sidebar = ({ activeModal, setActiveModal }) => {
                 {genericsData.map(generic => (
                     <li
                         className='sidebar__generic--item'
-                        id={generic.projectId}
+                        id={generic.id}
                         key={generic.name}
-                        onClick={e => changeProject(generic.projectId)}
+                        onClick={()=> changeActiveProject(generic.id)}
                     >
                         <span className={generic.color}>
                             <ion-icon name={generic.icon} class='sidebar__generic--icon'></ion-icon>
@@ -72,7 +57,7 @@ const Sidebar = ({ activeModal, setActiveModal }) => {
                         <span>{generic.name}</span>
                     </li>
                 ))}
-                {projects.map(
+                {projects && projects.map(
                     project =>
                         project.favorite && (
                             <li
@@ -80,7 +65,7 @@ const Sidebar = ({ activeModal, setActiveModal }) => {
                                 id={project.id}
                                 data-menu='favorites'
                                 key={project.id}
-                                onClick={() => changeProject(project.projectName.toLoweCase())}
+                                onClick={() => changeActiveProject(project.id)}
                             >
                                 <span
                                     className='project__icon'

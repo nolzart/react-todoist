@@ -10,9 +10,9 @@ const Calendar = ({
     prevMonth,
     nextMonth,
     actualMonth,
-    showCalendar
+    showCalendar,
+    selectDay,
 }) => {
-    console.log(showCalendar)
     return (
         <div className={`calendar ${!showCalendar && 'u-display-none'}`}>
             <div className='calendar__date'>
@@ -102,7 +102,11 @@ const Calendar = ({
                     {days.map(day => {
                         if (day.type === 'prev-month') {
                             return (
-                                <div className='calendar__days--prev-date' key={`prev-${day.date}`}>
+                                <div
+                                    className='calendar__days--prev-date'
+                                    key={`prev-${day.date}`}
+                                    onClick={e => selectDay(e.target.textContent)}
+                                >
                                     {day.date}
                                 </div>
                             )
@@ -117,17 +121,29 @@ const Calendar = ({
                                     <div
                                         className='calendar__days--today'
                                         key={`actual-${day.date}`}
+                                        onClick={e => selectDay(e.target.textContent)}
                                     >
                                         {day.date}
                                     </div>
                                 )
                             }
 
-                            return <div key={`actual-${day.date}`}>{day.date}</div>
+                            return (
+                                <div
+                                    key={`actual-${day.date}`}
+                                    onClick={e => selectDay(e.target.textContent)}
+                                >
+                                    {day.date}
+                                </div>
+                            )
                         }
                         if (day.type === 'next-month')
                             return (
-                                <div className='calendar__days--next-date' key={`next-${day.date}`}>
+                                <div
+                                    className='calendar__days--next-date'
+                                    key={`next-${day.date}`}
+                                    onClick={e => selectDay(e.target.textContent)}
+                                >
                                     {day.date}
                                 </div>
                             )

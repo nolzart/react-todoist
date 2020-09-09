@@ -2,10 +2,10 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 
 const ArchivedProjects = ({ show }) => {
-    const projects = useSelector(state => state.projects.projects)
+    const projects = useSelector(state => state.firestore.ordered.projects)
     return (
         <div className={`${!show ? 'u-display-none' : null}`}>
-            {projects.map(project =>
+            {projects && projects.map(project =>
                 project.archived ? (
                     <section key={project.id} className='project' id={project.id} data-menu='archived'>
                         <span

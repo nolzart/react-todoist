@@ -90,5 +90,11 @@
         color: #fff;
         font-weight: bold;
         cursor: pointer;
+        margin: 1rem 0;
+    }
+
+    &__center {
+        width: 90%;
+        margin: 0 auto;
     }
 }

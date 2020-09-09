@@ -1,5 +1,5 @@
 .task-editor {
-    width: 90%;
+    width: 100%;
     margin: 0 auto;
     border: 1px solid $shading-gray;
     border-radius: 5px;
@@ -7,16 +7,14 @@
     flex-direction: column;
     padding: 1rem 0;
     position: relative;
-
+    &:focus {
+        border: 1px solid gray;
+    }
     &__input {
         display: block;
         padding: .5rem;
         border: none;
         outline: none;
-
-        &:focus .task-editor{
-            border: 1px solid gray;
-        }
     }
 
     &__buttons {
@@ -59,7 +57,7 @@
         }
     }
 
-    &__calendar-container {
+    &__select-container {
         position: absolute;
         top: 6.8rem;
         left: -2rem;

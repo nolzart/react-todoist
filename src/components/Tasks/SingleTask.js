@@ -1,6 +1,6 @@
 import React from 'react'
-
-const Task = ({title, projectId, id}) => {
+import moment from 'moment'
+const Task = ({task, date, id, projectName}) => {
     return (
         <section className='task__body'>
             <div className='task__body--options'>
@@ -15,8 +15,9 @@ const Task = ({title, projectId, id}) => {
                         className='form__checkbox'
                     />
                     <span className='task__checkbox--checked'></span>
-                    {title}
+                    {task}
                 </label>
+                <p className='task__body--date'>{moment(date.toDate()).format('MMM DD')}</p>
             </div>
             <div className='task__body--options'>
                 <div className='task__body--icon-container'>
@@ -29,7 +30,7 @@ const Task = ({title, projectId, id}) => {
                         name='trash-outline'
                     ></ion-icon>
                 </div>
-                <p className='task__body--project'>{projectId}</p>
+                <p className='task__body--project'>{projectName}</p>
             </div>
         </section>
     )

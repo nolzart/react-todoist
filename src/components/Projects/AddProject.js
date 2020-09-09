@@ -1,23 +1,33 @@
 import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
-//actions
-import * as projectActions from '../store/actions/projectActions'
+import { useFirestore } from 'react-redux-firebase'
 //components
 import Modal from '../Modal'
 import SelectColor from '../SelectColor'
 
 const AddProject = ({ activeModal, setActiveModal }) => {
-    const dispatch = useDispatch()
-    const addProject = project => dispatch(projectActions.addProject(project))
+    const firestore = useFirestore()
+    
     const [inputValues, setInputValues] = useState({
         projectName: '',
         projectColor: '',
         favorite: false,
     })
 
-    const handleSubmit = () => {
-        setActiveModal('')
-        addProject(inputValues)
+    const addProject = async () => {
+        const newProject = {
+            ...inputValues,
+            date: new Date(),
+            authorFirstName: 'Omar',
+            authorLastName: 'Colmenares',
+            authorId: 12345,
+            archived: false,
+        }
+        try {
+            setActiveModal('')
+            await firestore.collection('projects').add(newProject)
+        } catch(err) {
+            console.log(err)
+        }
     }
     return (
         <Modal
@@ -27,7 +37,7 @@ const AddProject = ({ activeModal, setActiveModal }) => {
             activeModal={activeModal}
             setActiveModal={setActiveModal}
             showBody={true}
-            handleSubmit={handleSubmit}
+            handleSubmit={addProject}
         >
             <form>
                 <div className='form__group'>
