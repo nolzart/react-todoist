@@ -1,20 +1,23 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import moment from 'moment'
-
-const Calendar = ({
-    dateContext,
-    days,
-    today,
-    tomorrow,
-    nextWeek,
-    prevMonth,
-    nextMonth,
-    actualMonth,
-    showCalendar,
-    selectDay,
-}) => {
+import useCalendar from '../../hooks/useCalendar'
+const Calendar = ({currentDate, setCurrentDate, showOption}) => {
+    const [
+        dateContext,
+        days,
+        today,
+        tomorrow,
+        nextWeek,
+        prevMonth,
+        nextMonth,
+        actualMonth,
+        selectDay,
+    ] = useCalendar(currentDate)
+    useEffect(() => {
+        setCurrentDate(moment(dateContext))
+    }, [dateContext])
     return (
-        <div className={`calendar ${!showCalendar && 'u-display-none'}`}>
+        <div className={`calendar ${showOption === 'calendar' ?  '' : 'u-display-none'}`}>
             <div className='calendar__date'>
                 <p>Sep 04</p>
             </div>

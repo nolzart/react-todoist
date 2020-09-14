@@ -33,7 +33,7 @@ const Projects = ({ projects, sectionName, setActiveModal}) => {
 
                 {show.showProjects ? (
                     <div>
-                        {projects.map(pro =>
+                        {projects && projects.map(pro =>
                             !pro.archived ? <Project key={pro.id} project={pro} /> : null
                         )}
                         <button className='projects__inner--btn' onClick={() => setActiveModal('ADD_PROJECT')}>

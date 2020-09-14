@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 
-const SelectProject = ({ showProjects, setShowProjects, setSelectedProject }) => {
+const SelectProject = ({ showOption, setShowOption, setSelectedProject }) => {
     const projects = useSelector(state => state.firestore.ordered.projects)
     const [options, setOptions] = useState([])
     const [inputValue, setInputValue] = useState('')
 
     const handleSelectedProject = option => {
-        setShowProjects(false)
+        setShowOption('')
         setInputValue('')
         setSelectedProject({ ...option })
     }
@@ -32,10 +32,10 @@ const SelectProject = ({ showProjects, setShowProjects, setSelectedProject }) =>
                 },
             ])
         }
-    }, [inputValue, showProjects])
+    }, [inputValue, showOption])
     return (
         <div
-            className={`drop-menu ${!showProjects ? 'u-display-none' : ''}`}
+            className={`drop-menu ${showOption !== 'select_project' ? 'u-display-none' : ''}`}
             style={{ position: 'absolute', top: '-1rem' }}
         >
             <input

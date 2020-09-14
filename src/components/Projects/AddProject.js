@@ -1,34 +1,12 @@
-import React, { useState } from 'react'
-import { useFirestore } from 'react-redux-firebase'
-//components
+import React from 'react'
+// hooks
+import useProject from '../../hooks/useProject'
+// components
 import Modal from '../Modal'
 import SelectColor from '../SelectColor'
 
 const AddProject = ({ activeModal, setActiveModal }) => {
-    const firestore = useFirestore()
-    
-    const [inputValues, setInputValues] = useState({
-        projectName: '',
-        projectColor: '',
-        favorite: false,
-    })
-
-    const addProject = async () => {
-        const newProject = {
-            ...inputValues,
-            date: new Date(),
-            authorFirstName: 'Omar',
-            authorLastName: 'Colmenares',
-            authorId: 12345,
-            archived: false,
-        }
-        try {
-            setActiveModal('')
-            await firestore.collection('projects').add(newProject)
-        } catch(err) {
-            console.log(err)
-        }
-    }
+    const {inputValues, setInputValues, addProject} = useProject()
     return (
         <Modal
             modalTitle='Add Project'

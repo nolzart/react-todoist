@@ -4,18 +4,19 @@ import moment from 'moment'
 import useTask from '../../hooks/useTask'
 import TaskEditor from './TaskEditor'
 
-const AddTask = ({ activeProject, activeModal, setActiveModal }) => {
-    const { addTask } = useTask('', activeProject)
-    const [currentDate, setCurrentDate] = useState(moment())
+const UpdateTask = ({ taskId, activeProject, activeModal, setActiveModal, date }) => {
+    const { updateTask } = useTask(taskId, activeProject)
+    const [currentDate, setCurrentDate] = useState(moment(date.toDate()))
     return (
         <>
             <TaskEditor
                 activeProject={activeProject}
                 activeModal={activeModal}
                 setActiveModal={setActiveModal}
-                modalConductor='ADD_TASK'
-                buttonTitle='Add Task'
-                handleSubmit={addTask}
+                modalConductor={`UPDATE_TASK${taskId}`}
+                buttonTitle='Update Task'
+                handleSubmit={updateTask}
+                taskId={taskId}
                 currentDate={currentDate}
                 setCurrentDate={setCurrentDate}
             />
@@ -23,4 +24,4 @@ const AddTask = ({ activeProject, activeModal, setActiveModal }) => {
     )
 }
 
-export default AddTask
+export default UpdateTask

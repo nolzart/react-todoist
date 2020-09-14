@@ -9,9 +9,10 @@ const Modal = props => {
         modalConductor,
         handleSubmit,
     } = props
-    console.log(props)
     return (
-        <section className={`modal ${activeModal !== modalConductor && 'u-display-none'}`}>
+        <section
+            className={`modal ${activeModal !== modalConductor && 'u-display-none'}`}
+        >
             <div className='modal__container'>
                 <header className='modal__header'>
                     <h3 className='modal__header--title'>{modalTitle}</h3>

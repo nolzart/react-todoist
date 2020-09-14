@@ -1,31 +1,12 @@
-import React, { useState } from 'react'
-import { useFirestore } from 'react-redux-firebase'
-//components
+import React from 'react'
+// hooks
+import useProject from '../../hooks/useProject'
+// components
 import Modal from '../Modal'
 import SelectColor from '../SelectColor'
 
 const UpdateProject = ({ activeModal, setActiveModal, projectId }) => {
-    const firestore = useFirestore()
-    const [inputValues, setInputValues] = useState({
-        projectName: '',
-        projectColor: '',
-        favorite: false,
-    })
-
-    const updateProject = async () => {
-        try {
-            const projectDoc = await firestore.collection('projects').doc(projectId).get()
-            const updatedProject = {
-                projectName: inputValues.projectName || projectDoc.data().projectName,
-                projectColor: inputValues.projectColor || projectDoc.data().projectColor,
-                favorite: inputValues.favorite || projectDoc.data().favorite,
-            }
-            await firestore.collection('projects').doc(projectId).update(updatedProject)
-            setActiveModal('')
-        } catch (err) {
-            console.log(err)
-        }
-    }
+    const { inputValues, setInputValues, updateProject } = useProject(projectId)
     return (
         <Modal
             modalTitle='Update Project'
@@ -69,13 +50,14 @@ const UpdateProject = ({ activeModal, setActiveModal, projectId }) => {
                             type='checkbox'
                             id='favorite'
                             name='favorite'
+                            className='form__checkbox-switched--input'
+                            defaultChecked={inputValues.favorite ? true : false}
                             onClick={() =>
                                 setInputValues({
                                     ...inputValues,
                                     favorite: !inputValues.favorite,
                                 })
                             }
-                            className='form__checkbox-switched--input'
                         />
                         <span className='form__checkbox-switched--span'></span>
                         <i className='form__checkbox-switched--indicator'></i>

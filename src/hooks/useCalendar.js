@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import moment from 'moment'
 
-const useCalendar = () => {
+const useCalendar = (currentDate = new Date()) => {
     const today = new Date()
     const tomorrow = new Date(today.getFullYear(), today.getMonth(), today.getDate() + 1)
     const nextWeek = new Date(
@@ -10,7 +10,7 @@ const useCalendar = () => {
         today.getDate() + (8 - today.getDay())
     )
     const [days, setDays] = useState([])
-    const [dateContext, setDateContext] = useState(moment())
+    const [dateContext, setDateContext] = useState(moment(currentDate))
     const nextMonth = () => {
         let newDateContext = Object.assign({}, dateContext)
         newDateContext = moment(newDateContext).add(1, 'month')

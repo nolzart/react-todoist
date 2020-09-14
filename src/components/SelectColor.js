@@ -1,20 +1,18 @@
-import React,{useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import { colors } from './constanst'
 
-const SelectColor = ({inputValues, setInputValues}) => {
-
+const SelectColor = ({ inputValues, setInputValues }) => {
     const [showSelect, setShowSelect] = useState(false)
-    const [selectedColor, setSelectedColor] = useState({
-        name: 'Grey',
-        color: '#b8b8b8',
-    })
-
-    useEffect(() => {
-        setInputValues({
-            ...inputValues,
-            projectColor: selectedColor.color,
-        })
-    }, [selectedColor])
+    console.log(inputValues)
+    const [selectedColor, setSelectedColor] = useState({ name: 'gray', color: '#b8b8b8' })
+    
+    // useEffect(() => {
+    //     setInputValues({
+    //         ...inputValues,
+    //         projectColor: selectedColor,
+    //     })
+        
+    // }, [inputValues])
 
     return (
         <div className='drop-menu' onClick={() => setShowSelect(!showSelect)}>
@@ -23,10 +21,12 @@ const SelectColor = ({inputValues, setInputValues}) => {
                     <div
                         className='drop-menu__option--icon'
                         style={{
-                            backgroundColor: `${selectedColor.color}`,
+                            backgroundColor: `${
+                                inputValues.projectColor.color
+                            }`,
                         }}
                     ></div>
-                    <p>{selectedColor.name}</p>
+                    <p>{inputValues.projectColor.name}</p>
                 </li>
             </ul>
             <ul className={`drop-menu__select ${showSelect ? 'active' : ''}`}>
@@ -35,9 +35,12 @@ const SelectColor = ({inputValues, setInputValues}) => {
                         className='drop-menu__option'
                         key={color.name.toLowerCase()}
                         onClick={() =>
-                            setSelectedColor({
-                                color: color.color,
-                                name: color.name,
+                            setInputValues({
+                                ...inputValues,
+                                projectColor: {
+                                    color: color.color,
+                                    name: color.name,
+                                },
                             })
                         }
                     >

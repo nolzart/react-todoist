@@ -6,9 +6,11 @@ import AddProject from './Projects/AddProject'
 import UpdateProject from './Projects/UpdateProject'
 import DeleteProject from './Projects/DeleteProject'
 
-import AddTask from './Tasks/QuickAddTask'
+import QuickAddTask from './Tasks/QuickAddTask'
+import DeleteTask from './Tasks/DeleteTask'
 
 const ModalConductor = props => {
+    const taskId = props.activeModal.split('-')[1]
     switch (props.activeModal) {
         case 'CONTEXT_MENU':
             return <ContextMenu {...props} />
@@ -19,8 +21,9 @@ const ModalConductor = props => {
         case 'DELETE_PROJECT':
             return <DeleteProject {...props} />
         case 'QUICK_ADD_TASK':
-            console.log('active modal works!')
-            return <AddTask {...props} />
+            return <QuickAddTask {...props} />
+        case `DELETE_TASK-${taskId}`:
+            return <DeleteTask {...props} taskId={taskId}/>
         default:
             return null
     }

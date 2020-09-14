@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-
+import {useSelector} from 'react-redux'
 //components
 import Header from '../layout/Header'
 import Sidebar from '../Sidebar'
@@ -10,7 +10,7 @@ const Content = () => {
     const [activeProject, changeActiveProject] = useState('inbox')
     return (
         <>
-            <Header activeModal={activeModal} setActiveModal={setActiveModal} />
+            <Header activeModal={activeModal} setActiveModal={setActiveModal} activeProject={activeProject}/>
             <div className='grid'>
                 <Sidebar
                     activeModal={activeModal}

@@ -3,23 +3,19 @@ import { useFirestore } from 'react-redux-firebase'
 
 const ContextMenu = ({ top, left, projectId, activeModal, setActiveModal, section }) => {
     const firestore = useFirestore()
-    const updateProject = async ({
-        projectName = null,
-        projectColor = null,
-        favorite = null,
+    const updateProject = async (
         archived = null,
-    }) => {
+        favorite = null,
+    ) => {
         try {
             const projectDoc = await firestore.collection('projects').doc(projectId).get()
             const updatedProject = {
                 ...projectDoc.data(),
-                projectName: projectName ?? projectDoc.data().projectName,
-                projectColor: projectColor ?? projectDoc.data().projectColor,
                 favorite: favorite ?? projectDoc.data().favorite,
                 archived: archived ?? projectDoc.data().archived,
             }
-            await firestore.collection('projects').doc(projectId).update(updatedProject)
             setActiveModal('')
+            await firestore.collection('projects').doc(projectId).update(updatedProject)
         } catch (err) {
             console.log(err)
         }
@@ -46,7 +42,7 @@ const ContextMenu = ({ top, left, projectId, activeModal, setActiveModal, sectio
                         </span>
                         <span
                             className='context-menu__item--text'
-                            onClick={() => updateProject(projectId, false)}
+                            onClick={() => updateProject(null, false)}
                         >
                             Remove from favorites
                         </span>
@@ -70,7 +66,7 @@ const ContextMenu = ({ top, left, projectId, activeModal, setActiveModal, sectio
                         </span>
                         <span
                             className='context-menu__item--text'
-                            onClick={() => updateProject(projectId, null, false)}
+                            onClick={() => updateProject( false, null)}
                         >
                             Unarchive project
                         </span>
@@ -118,7 +114,7 @@ const ContextMenu = ({ top, left, projectId, activeModal, setActiveModal, sectio
                         </span>
                         <span
                             className='context-menu__item--text'
-                            onClick={() => updateProject(projectId, true)}
+                            onClick={() => updateProject(null, true)}
                         >
                             Add to favorites
                         </span>
@@ -130,7 +126,7 @@ const ContextMenu = ({ top, left, projectId, activeModal, setActiveModal, sectio
                         </span>
                         <span
                             className='context-menu__item--text'
-                            onClick={() => updateProject(projectId, null, true)}
+                            onClick={() => updateProject(true, null)}
                         >
                             Archive project
                         </span>

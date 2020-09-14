@@ -6,7 +6,7 @@ import Projects from './Projects/Projects'
 import ModalConductor from './ModalConductor'
 import { genericsData } from './constanst'
 
-const Sidebar = ({ activeModal, setActiveModal, changeActiveProject }) => {
+const Sidebar = ({ activeModal, setActiveModal, changeActiveProject, activeProject }) => {
     useFirestoreConnect(['projects'])
 
     const projects = useSelector(state => state.firestore.ordered.projects)
@@ -41,6 +41,7 @@ const Sidebar = ({ activeModal, setActiveModal, changeActiveProject }) => {
                 projectId={projectId}
                 activeModal={activeModal}
                 setActiveModal={setActiveModal}
+                activeProject={activeProject}
                 section={section}
             />
             <ul className='sidebar__generic u-mb-medium'>
@@ -69,7 +70,7 @@ const Sidebar = ({ activeModal, setActiveModal, changeActiveProject }) => {
                             >
                                 <span
                                     className='project__icon'
-                                    style={{ backgroundColor: project.projectColor }}
+                                    style={{ backgroundColor: project.projectColor.color }}
                                 ></span>
                                 <span>{project.projectName}</span>
                             </li>
