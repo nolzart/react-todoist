@@ -9,6 +9,10 @@ const Modal = props => {
         modalConductor,
         handleSubmit,
     } = props
+    const handleClick = () => {
+        handleSubmit()
+        setActiveModal('')
+    }
     return (
         <section
             className={`modal ${activeModal !== modalConductor && 'u-display-none'}`}
@@ -30,7 +34,7 @@ const Modal = props => {
                     <button className='modal__btn--cancel' onClick={() => setActiveModal('')}>
                         Cancel
                     </button>
-                    <button className='modal__btn' onClick={handleSubmit}>
+                    <button className='modal__btn' onClick={handleClick}>
                         {buttonTitle}
                     </button>
                 </footer>

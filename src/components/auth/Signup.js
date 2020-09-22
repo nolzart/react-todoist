@@ -1,7 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { useForm } from 'react-hook-form'
+import useAuth from '../../hooks/useAuth'
 
-const Signup = () => {
+const Signup = props => {
+    const {signInWithGoogle, signInWithFacebook} = useAuth()
+    
+    const { register, handleSubmit, errors } = useForm({ mode: 'onChange' })
+    const [emailBorderStyle, setemailBorderStyle] = useState({
+        borderBottom: '2px solid rgb(117, 113, 113)',
+    })
+    const onSubmit = ({ email }) => props.history.push('/signup/step_two', { email })
     return (
         <section className='login'>
             <div className='login__container'>
@@ -10,16 +19,17 @@ const Signup = () => {
                     <h2>todoist</h2>
                 </Link>
                 <h2 className='heading-secondary'>Sign up</h2>
-                <a href='/login-google' className='login__container--link'>
-                    <img src="img/google-color.svg" alt="Google icon"/> Continue with Google
-                </a>
-                <a href='/login-facebbok' className='login__container--link'>
-                <img src="img/facebook-square-color.svg" alt="Google icon"/> Continue with Facebook
-                </a>
+                <span className='login__container--link' onClick={signInWithGoogle}>
+                    <img src='img/google-color.svg' alt='Google icon' /> Continue with Google
+                </span>
+                <span className='login__container--link' onClick={signInWithFacebook}>
+                    <img src='img/facebook-square-color.svg' alt='Google icon' /> Continue with
+                    Facebook
+                </span>
                 <div className='separator-or'>
                     <span>OR</span>
                 </div>
-                <form className='form'>
+                <form className='form' onSubmit={handleSubmit(onSubmit)}>
                     <div className='form__group'>
                         <input
                             type='email'
@@ -27,14 +37,28 @@ const Signup = () => {
                             id='email'
                             className='form__input form__input--email'
                             placeholder='Email'
-                            required
+                            style={emailBorderStyle}
+                            onChange={() =>
+                                setemailBorderStyle(
+                                    !errors.password
+                                        ? { borderBottom: '2px solid  #10ac84' }
+                                        : { borderBottom: '2px solid #e44232' }
+                                )
+                            }
+                            ref={register({
+                                required: 'Required',
+                                pattern: {
+                                    value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                                    message: 'invalid email address',
+                                },
+                            })}
                         />
                         <label htmlFor='email' className='form__label'>
                             Email
                         </label>
                     </div>
                     <button className='btn btn--large btn--red'>
-                        <Link to='/signup/step_two' className="u-color-white">Sign up with email</Link>
+                        <span className='u-color-white'>Sign up with email</span>
                     </button>
                 </form>
             </div>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { useSelector } from 'react-redux'
 import { useFirestoreConnect } from 'react-redux-firebase'
 
@@ -6,7 +6,10 @@ import SingleTask from './SingleTask.js'
 import AddTask from './AddTask'
 
 const Tasks = ({ activeProject, activeModal, setActiveModal }) => {
-    useFirestoreConnect(['tasks'])
+    const currentUser = useSelector(state => state.firebase.auth)
+    useFirestoreConnect([
+        { collection: 'tasks', where: ['userId', '==', currentUser.uid || 'notUser'] },
+    ])
     const allTasks = useSelector(state => state.firestore.ordered.tasks)
     const tasks = allTasks && allTasks.filter(task => task.projectId === activeProject)
     const projects = useSelector(state => state.firestore.data.projects)

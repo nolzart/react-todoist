@@ -1,11 +1,13 @@
 import { useState, useEffect } from 'react'
 import { useFirestore } from 'react-redux-firebase'
+import { useSelector } from 'react-redux'
 
 const useProject = (projectId = '') => {
+    const currentUser = useSelector(state => state.firebase.auth)
     const firestore = useFirestore()
     const [inputValues, setInputValues] = useState({
         projectName: '',
-        projectColor: {name: 'gray', color: '#b8b8b8'},
+        projectColor: { name: 'gray', color: '#b8b8b8' },
         favorite: false,
     })
 
@@ -21,11 +23,11 @@ const useProject = (projectId = '') => {
         const newProject = {
             ...inputValues,
             date: new Date(),
-            authorFirstName: 'Omar',
-            authorLastName: 'Colmenares',
-            authorId: 12345,
+            username: currentUser.displayName,
+            userId: currentUser.uid,
             archived: false,
         }
+        console.log(newProject)
         try {
             await firestore.collection('projects').add(newProject)
         } catch (err) {
@@ -61,7 +63,6 @@ const useProject = (projectId = '') => {
                     console.log(err)
                 })
         }
-        console.log(inputValues)
     }, [projectId])
     return { inputValues, setInputValues, addProject, deleteProject, updateProject }
 }

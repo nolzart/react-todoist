@@ -13,8 +13,8 @@ const TaskEditor = ({
     handleSubmit,
     taskId,
     activeProject,
-    currentDate, 
-    setCurrentDate
+    currentDate,
+    setCurrentDate,
 }) => {
     const [showOption, setShowOption] = useState('')
 
@@ -23,7 +23,8 @@ const TaskEditor = ({
         activeProject
     )
     const handleClick = (currentDate, taskContent, selectedProject) => {
-        setActiveModal('')
+        if (activeModal !== 'ADD_TASK') setActiveModal('')
+        console.log(selectedProject)
         handleSubmit(currentDate, taskContent, selectedProject)
     }
     return (

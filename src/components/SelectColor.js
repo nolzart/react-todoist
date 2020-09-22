@@ -3,17 +3,6 @@ import { colors } from './constanst'
 
 const SelectColor = ({ inputValues, setInputValues }) => {
     const [showSelect, setShowSelect] = useState(false)
-    console.log(inputValues)
-    const [selectedColor, setSelectedColor] = useState({ name: 'gray', color: '#b8b8b8' })
-    
-    // useEffect(() => {
-    //     setInputValues({
-    //         ...inputValues,
-    //         projectColor: selectedColor,
-    //     })
-        
-    // }, [inputValues])
-
     return (
         <div className='drop-menu' onClick={() => setShowSelect(!showSelect)}>
             <ul className='drop-menu__default-option'>

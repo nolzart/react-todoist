@@ -7,7 +7,14 @@ import ModalConductor from './ModalConductor'
 import { genericsData } from './constanst'
 
 const Sidebar = ({ activeModal, setActiveModal, changeActiveProject, activeProject }) => {
-    useFirestoreConnect(['projects'])
+    const currentUser = useSelector(state => state.firebase.auth)
+    console.log(currentUser)
+        useFirestoreConnect([
+            {
+                collection: 'projects',
+                where: ['userId', '==', currentUser.uid || 'abc'],
+            },
+        ])
 
     const projects = useSelector(state => state.firestore.ordered.projects)
 
@@ -50,7 +57,7 @@ const Sidebar = ({ activeModal, setActiveModal, changeActiveProject, activeProje
                         className='sidebar__generic--item'
                         id={generic.id}
                         key={generic.name}
-                        onClick={()=> changeActiveProject(generic.id)}
+                        onClick={() => changeActiveProject(generic.id)}
                     >
                         <span className={generic.color}>
                             <ion-icon name={generic.icon} class='sidebar__generic--icon'></ion-icon>
@@ -58,24 +65,25 @@ const Sidebar = ({ activeModal, setActiveModal, changeActiveProject, activeProje
                         <span>{generic.name}</span>
                     </li>
                 ))}
-                {projects && projects.map(
-                    project =>
-                        project.favorite && (
-                            <li
-                                className='sidebar__generic--item'
-                                id={project.id}
-                                data-menu='favorites'
-                                key={project.id}
-                                onClick={() => changeActiveProject(project.id)}
-                            >
-                                <span
-                                    className='project__icon'
-                                    style={{ backgroundColor: project.projectColor.color }}
-                                ></span>
-                                <span>{project.projectName}</span>
-                            </li>
-                        )
-                )}
+                {projects &&
+                    projects.map(
+                        project =>
+                            project.favorite && (
+                                <li
+                                    className='sidebar__generic--item'
+                                    id={project.id}
+                                    data-menu='favorites'
+                                    key={project.id}
+                                    onClick={() => changeActiveProject(project.id)}
+                                >
+                                    <span
+                                        className='project__icon'
+                                        style={{ backgroundColor: project.projectColor.color }}
+                                    ></span>
+                                    <span>{project.projectName}</span>
+                                </li>
+                            )
+                    )}
             </ul>
             <div className='sidebar__middle'>
                 <Projects
