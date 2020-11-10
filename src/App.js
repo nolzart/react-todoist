@@ -6,7 +6,8 @@ import Login from './components/auth/Login'
 import Signup from './components/auth/Signup'
 import SignupStepTwo from './components/auth/SignupStepTwo'
 import Content from './components/pages/Content'
-import useAuth from './hooks/useAuth'
+import {useAuth} from './hooks/useAuth'
+
 const App = () => {
     const { AuthIsLoaded } = useAuth()
     return (

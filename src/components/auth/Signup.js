@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
-import useAuth from '../../hooks/useAuth'
+import { useAuth } from '../../hooks/useAuth'
 
 const Signup = props => {
-    const {signInWithGoogle, signInWithFacebook} = useAuth()
-    
+    const { signInWithGoogle, signInWithFacebook } = useAuth()
+
     const { register, handleSubmit, errors } = useForm({ mode: 'onChange' })
     const [emailBorderStyle, setemailBorderStyle] = useState({
         borderBottom: '2px solid rgb(117, 113, 113)',

@@ -1,15 +1,24 @@
-import React from 'react'
-import { isLoaded } from 'react-redux-firebase'
+import React, { useEffect, useState } from 'react'
+import { isLoaded, useFirebase } from 'react-redux-firebase'
 import { useSelector } from 'react-redux'
-import { useFirebase } from 'react-redux-firebase'
-const useAuth = () => {
-    
+
+export const useAuth = () => {
     const firebase = useFirebase()
 
     const AuthIsLoaded = ({ children }) => {
         const auth = useSelector(state => state.firebase.auth)
         if (!isLoaded(auth)) return <div>loading...</div>
         return children
+    }
+    const OnAuthStateChanged = callback => {
+        const auth = useSelector(state => state.firebase.auth)
+        const [isAuth, setIsAuth] = useState(false)
+    
+        useEffect(() => {
+            auth.uid ? setIsAuth(true) : setIsAuth(false)
+        }, [auth])
+        
+        if((!isLoaded(auth))) callback(isAuth)
     }
 
     const createUserWithEmail = async user => {
@@ -64,7 +73,17 @@ const useAuth = () => {
         signInWithFacebook,
         signOut,
         AuthIsLoaded,
+        OnAuthStateChanged
     }
 }
 
-export default useAuth
+export const useAuthStateChanged = callback => {
+    const auth = useSelector(state => state.firebase.auth)
+    const [isAuth, setIsAuth] = useState(false)
+
+    useEffect(() => {
+        auth.uid ? setIsAuth(true) : setIsAuth(false)
+    }, [auth])
+
+    callback(isAuth)
+}

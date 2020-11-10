@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
-import useAuth from '../../hooks/useAuth'
+import { useAuth } from '../../hooks/useAuth'
 
 const Login = props => {
     const { signInWithEmail } = useAuth()
@@ -14,7 +14,7 @@ const Login = props => {
     const [passwordBorderStyle, setpasswordBorderStyle] = useState({
         borderBottom: '2px solid rgb(117, 113, 113)',
     })
-    const onSubmit = (data) => {
+    const onSubmit = data => {
         signInWithEmail(data)
         reset()
         setemailBorderStyle({

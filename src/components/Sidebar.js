@@ -8,7 +8,6 @@ import { genericsData } from './constanst'
 
 const Sidebar = ({ activeModal, setActiveModal, changeActiveProject, activeProject }) => {
     const currentUser = useSelector(state => state.firebase.auth)
-    console.log(currentUser)
         useFirestoreConnect([
             {
                 collection: 'projects',
